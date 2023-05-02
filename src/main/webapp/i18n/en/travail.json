@@ -1,0 +1,25 @@
+{
+  "pointagePresenceApp": {
+    "travail": {
+      "home": {
+        "title": "Travails",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Travail",
+        "createOrEditLabel": "Create or edit a Travail",
+        "notFound": "No Travails found"
+      },
+      "created": "A new Travail is created with identifier {{ param }}",
+      "updated": "A Travail is updated with identifier {{ param }}",
+      "deleted": "A Travail is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Travail {{ id }}?"
+      },
+      "detail": {
+        "title": "Travail"
+      },
+      "id": "ID",
+      "date": "Date",
+      "typeTravail": "Type Travail"
+    }
+  }
+}
