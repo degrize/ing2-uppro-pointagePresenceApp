@@ -1,0 +1,15 @@
+{
+  "applications": "*",
+  "changelogDate": "20230502180042",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "zone",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Zone",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

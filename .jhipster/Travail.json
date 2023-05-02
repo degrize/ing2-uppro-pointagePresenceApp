@@ -1,0 +1,25 @@
+{
+  "applications": "*",
+  "changelogDate": "20230502180041",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "travail",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "typeTravail",
+      "fieldType": "TypeTravail",
+      "fieldValues": "JOURNALIER,HEBDOMADAIRE"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Travail",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
