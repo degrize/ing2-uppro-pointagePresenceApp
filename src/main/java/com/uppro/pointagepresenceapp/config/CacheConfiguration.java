@@ -48,6 +48,8 @@ public class CacheConfiguration {
             createCache(cm, com.uppro.pointagepresenceapp.domain.User.class.getName());
             createCache(cm, com.uppro.pointagepresenceapp.domain.Authority.class.getName());
             createCache(cm, com.uppro.pointagepresenceapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.uppro.pointagepresenceapp.domain.Presence.class.getName());
+            createCache(cm, com.uppro.pointagepresenceapp.domain.Travail.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,28 @@
+{
+  "pointagePresenceApp": {
+    "presence": {
+      "home": {
+        "title": "Presences",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Presence",
+        "createOrEditLabel": "Create or edit a Presence",
+        "notFound": "No Presences found"
+      },
+      "created": "A new Presence is created with identifier {{ param }}",
+      "updated": "A Presence is updated with identifier {{ param }}",
+      "deleted": "A Presence is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Presence {{ id }}?"
+      },
+      "detail": {
+        "title": "Presence"
+      },
+      "id": "ID",
+      "date": "Date",
+      "horaire": "Horaire",
+      "bilan": "Bilan",
+      "longitude": "Longitude",
+      "lattitude": "Lattitude"
+    }
+  }
+}

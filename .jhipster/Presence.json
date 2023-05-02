@@ -1,0 +1,41 @@
+{
+  "applications": "*",
+  "changelogDate": "20230502175352",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "presence",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "horaire",
+      "fieldType": "HoraireType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MATIN,SOIR,FIN_SEMAINE"
+    },
+    {
+      "fieldName": "bilan",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "lattitude",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Presence",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
