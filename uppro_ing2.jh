@@ -1,0 +1,36 @@
+entity Presence {
+	date Instant required,
+    horaire HoraireType required,
+    bilan String,
+    longitude Double required,
+    lattitude Double required
+}
+
+enum HoraireType {
+	MATIN,
+    SOIR,
+    FIN_SEMAINE
+}
+entity Travail {
+	date Instant,
+    typeTravail TypeTravail
+}
+
+enum TypeTravail {
+	JOURNALIER,
+    HEBDOMADAIRE
+}
+
+
+
+// Set pagination options
+paginate all with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

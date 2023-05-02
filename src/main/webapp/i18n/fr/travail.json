@@ -1,0 +1,25 @@
+{
+  "pointagePresenceApp": {
+    "travail": {
+      "home": {
+        "title": "Travails",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Travail",
+        "createOrEditLabel": "Créer ou éditer un Travail",
+        "notFound": "Aucun Travail trouvé"
+      },
+      "created": "Un nouveau Travail a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Travail avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Travail avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Travail {{ id }} ?"
+      },
+      "detail": {
+        "title": "Travail"
+      },
+      "id": "ID",
+      "date": "Date",
+      "typeTravail": "Type Travail"
+    }
+  }
+}
