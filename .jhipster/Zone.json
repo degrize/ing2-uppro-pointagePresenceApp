@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20230505150007",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "zone",
+  "fields": [
+    {
+      "fieldName": "pointA",
+      "fieldType": "Point",
+      "fieldValues": "X"
+    },
+    {
+      "fieldName": "pointB",
+      "fieldType": "Point",
+      "fieldValues": "X"
+    },
+    {
+      "fieldName": "pointC",
+      "fieldType": "Point",
+      "fieldValues": "X"
+    },
+    {
+      "fieldName": "pointD",
+      "fieldType": "Point",
+      "fieldValues": "X"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Zone",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

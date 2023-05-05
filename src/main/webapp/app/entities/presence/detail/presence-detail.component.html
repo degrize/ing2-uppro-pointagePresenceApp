@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="presence">
+      <h2 data-cy="presenceDetailsHeading"><span jhiTranslate="pointagePresenceApp.presence.detail.title">Presence</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ presence.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.presence.date">Date</span></dt>
+        <dd>
+          <span>{{ presence.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.presence.horaire">Horaire</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pointagePresenceApp.HoraireType.' + presence.horaire }}">{{ presence.horaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.presence.bilan">Bilan</span></dt>
+        <dd>
+          <span>{{ presence.bilan }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.presence.longitude">Longitude</span></dt>
+        <dd>
+          <span>{{ presence.longitude }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.presence.lattitude">Lattitude</span></dt>
+        <dd>
+          <span>{{ presence.lattitude }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/presence', presence.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
