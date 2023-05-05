@@ -1,0 +1,28 @@
+{
+  "pointagePresenceApp": {
+    "presence": {
+      "home": {
+        "title": "Presences",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Presence",
+        "createOrEditLabel": "Créer ou éditer un Presence",
+        "notFound": "Aucun Presence trouvé"
+      },
+      "created": "Un nouveau Presence a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Presence avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Presence avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Presence {{ id }} ?"
+      },
+      "detail": {
+        "title": "Presence"
+      },
+      "id": "ID",
+      "date": "Date",
+      "horaire": "Horaire",
+      "bilan": "Bilan",
+      "longitude": "Longitude",
+      "lattitude": "Lattitude"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "pointagePresenceApp": {
+    "TypeTravail": {
+      "null": "",
+      "JOURNALIER": "JOURNALIER",
+      "HEBDOMADAIRE": "HEBDOMADAIRE"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="zone">
+      <h2 data-cy="zoneDetailsHeading"><span jhiTranslate="pointagePresenceApp.zone.detail.title">Zone</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ zone.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.zone.pointA">Point A</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointA }}">{{ zone.pointA }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.zone.pointB">Point B</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointB }}">{{ zone.pointB }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.zone.pointC">Point C</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointC }}">{{ zone.pointC }}</span>
+        </dd>
+        <dt><span jhiTranslate="pointagePresenceApp.zone.pointD">Point D</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointD }}">{{ zone.pointD }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/zone', zone.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>
