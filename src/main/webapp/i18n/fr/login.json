@@ -1,10 +1,10 @@
 {
   "login": {
-    "title": "Authentification",
+    "title": "Presence Tracker",
     "form": {
       "password": "Mot de passe",
       "password.placeholder": "Votre mot de passe",
-      "rememberme": "Garder la session ouverte",
+      "rememberme": "Se souvenir",
       "button": "Connexion"
     },
     "messages": {
@@ -13,7 +13,7 @@
       }
     },
     "password": {
-      "forgot": "Avez-vous oublié votre mot de passe ?"
+      "forgot": "Mot de passe oublié ?"
     }
   }
 }

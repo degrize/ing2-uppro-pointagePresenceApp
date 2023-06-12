@@ -1,13 +1,13 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-
-.hipster {
-  display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../../content/images/jhipster_family_member_1.svg') no-repeat center top;
-  background-size: contain;
+.btnDemarrer {
+  /* Linear */
+  padding: 10px;
+  background: linear-gradient(104.52deg, #05293f -11.68%, #099fa3 113.61%);
+  border-radius: 11px;
+  color: #ffffff;
+  border: none;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
@@ -16,8 +16,4 @@ Main page styles
   only screen and (-o-min-device-pixel-ratio: 2/1),
   only screen and (min-resolution: 192dpi),
   only screen and (min-resolution: 2dppx) {
-  .hipster {
-    background: url('../../content/images/jhipster_family_member_1.svg') no-repeat center top;
-    background-size: contain;
-  }
 }
