@@ -6,7 +6,30 @@
     </h1>
     <h6>Renseignez votre presence...</h6>
 
-    <button class="btnDemarrer mt-4">Démarrer</button>
+    <ng-container [ngSwitch]="account !== null">
+      <ng-container *ngSwitchCase="true">
+        <button (click)="showDialog()" class="btnDemarrer mt-4">Démarrer</button>
+        <p-dialog header=" " [(visible)]="visible" [style]="{ width: '50vw' }" [maximizable]="true">
+          <div class="d-flex justify-content-center align-items-center flex-column gap-3">
+            <textarea class="inputWork" placeholder="Renseignez votre travail de la journée" pInputTextarea></textarea>
+            <p-button label="Je valide ma présence" styleClass="p-button-raised p-button-text" (click)="checkPointInPolygon()"> </p-button>
+          </div>
+        </p-dialog>
+
+        <p-toast key="positionSuccessToast"></p-toast>
+        <p-toast position="bottom-center" key="positionDenyToast" (onClose)="clearToastDeny()" [baseZIndex]="5000">
+          <ng-template let-message pTemplate="message">
+            <div class="flex flex-column" style="flex: 1">
+              <div class="text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{ message.summary }}</h4>
+                <p>{{ message.detail }}</p>
+              </div>
+            </div>
+          </ng-template>
+        </p-toast>
+      </ng-container>
+    </ng-container>
   </div>
   <img src="../../content/images/imgPosition.png" width="50%" alt="" />
 </div>

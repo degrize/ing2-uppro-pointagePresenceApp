@@ -3,11 +3,24 @@ Main page styles
 ========================================================================== */
 .btnDemarrer {
   /* Linear */
-  padding: 10px;
+  padding: 10px 60px;
   background: linear-gradient(104.52deg, #05293f -11.68%, #099fa3 113.61%);
   border-radius: 11px;
   color: #ffffff;
   border: none;
+  transition: 0.4s ease-in-out;
+}
+.btnDemarrer:focus {
+  transform: scale(0.9);
+}
+
+.inputWork {
+  padding: 5px;
+  border-radius: 10px;
+  min-width: 90%;
+  height: 100px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
