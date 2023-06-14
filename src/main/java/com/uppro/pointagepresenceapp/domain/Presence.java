@@ -1,5 +1,6 @@
 package com.uppro.pointagepresenceapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.uppro.pointagepresenceapp.domain.enumeration.HoraireType;
 import java.io.Serializable;
 import java.time.Instant;
@@ -44,6 +45,10 @@ public class Presence implements Serializable {
     @NotNull
     @Column(name = "lattitude", nullable = false)
     private Double lattitude;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "travails", "zones", "presences" }, allowSetters = true)
+    private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -121,6 +126,19 @@ public class Presence implements Serializable {
         return this;
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Presence user(User user) {
+        this.setUser(user);
+        return this;
+    }
+
     public void setLattitude(Double lattitude) {
         this.lattitude = lattitude;
     }
@@ -154,6 +172,7 @@ public class Presence implements Serializable {
             ", bilan='" + getBilan() + "'" +
             ", longitude=" + getLongitude() +
             ", lattitude=" + getLattitude() +
+            ", user=" + getUser() +
             "}";
     }
 }

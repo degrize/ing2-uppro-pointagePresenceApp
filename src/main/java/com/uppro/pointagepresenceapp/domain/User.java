@@ -1,6 +1,7 @@
 package com.uppro.pointagepresenceapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.uppro.pointagepresenceapp.config.Constants;
 import java.io.Serializable;
 import java.time.Instant;
@@ -52,6 +53,22 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
     @Column(name = "last_name", length = 50)
     private String lastName;
 
+    @NotNull
+    @Size(max = 10)
+    @Column(name = "matricule", length = 10)
+    private String matricule;
+
+    @Size(max = 100)
+    @Column(name = "adresse", length = 100)
+    private String adresse;
+
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
+
     @Email
     @Size(min = 5, max = 254)
     @Column(length = 254, unique = true)
@@ -93,6 +110,21 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "jhi_user" }, allowSetters = true)
+    private Set<Presence> presences = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "jhi_user" }, allowSetters = true)
+    private Set<Zone> zones = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JsonIgnoreProperties(value = { "jhi_user" }, allowSetters = true)
+    private Set<Travail> travails = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -132,6 +164,38 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public byte[] getPhoto() {
+        return this.photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoContentType() {
+        return photoContentType;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
     }
 
     public String getEmail() {
@@ -198,6 +262,68 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
         this.authorities = authorities;
     }
 
+    public Set<Presence> getPresences() {
+        return this.presences;
+    }
+
+    public void setPresences(Set<Presence> presences) {
+        if (this.presences != null) {
+            this.presences.forEach(i -> i.setUser(null));
+        }
+        if (presences != null) {
+            presences.forEach(i -> i.setUser(this));
+        }
+        this.presences = presences;
+    }
+
+    public User Presences(Set<Presence> presences) {
+        this.setPresences(presences);
+        return this;
+    }
+
+    public User addPresence(Presence presence) {
+        this.presences.add(presence);
+        presence.setUser(this);
+        return this;
+    }
+
+    public User removePresence(Presence presence) {
+        this.presences.remove(presence);
+        presence.setUser(null);
+        return this;
+    }
+
+    public Set<Travail> getTravails() {
+        return this.travails;
+    }
+
+    public void setTravails(Set<Travail> travails) {
+        if (this.travails != null) {
+            this.travails.forEach(i -> i.setUser(null));
+        }
+        if (travails != null) {
+            travails.forEach(i -> i.setUser(this));
+        }
+        this.travails = travails;
+    }
+
+    public User Travails(Set<Travail> travails) {
+        this.setTravails(travails);
+        return this;
+    }
+
+    public User addTravail(Travail travail) {
+        this.travails.add(travail);
+        travail.setUser(this);
+        return this;
+    }
+
+    public User removeTravail(Travail travail) {
+        this.travails.remove(travail);
+        travail.setUser(null);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -222,6 +348,10 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", matricule='" + matricule + '\'' +
+            ", adresse='" + adresse + '\'' +
+            ", photo='" + photo  + '\'' +
+            ", photoContentType='" + photoContentType  + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated='" + activated + '\'' +

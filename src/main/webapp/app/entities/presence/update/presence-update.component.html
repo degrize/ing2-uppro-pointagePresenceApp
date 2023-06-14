@@ -67,48 +67,6 @@
           <label class="form-label" jhiTranslate="pointagePresenceApp.presence.bilan" for="field_bilan">Bilan</label>
           <input type="text" class="form-control" name="bilan" id="field_bilan" data-cy="bilan" formControlName="bilan" />
         </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.presence.longitude" for="field_longitude">Longitude</label>
-          <input type="number" class="form-control" name="longitude" id="field_longitude" data-cy="longitude" formControlName="longitude" />
-          <div *ngIf="editForm.get('longitude')!.invalid && (editForm.get('longitude')!.dirty || editForm.get('longitude')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('longitude')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
-              Ce champ est obligatoire.
-            </small>
-            <small
-              class="form-text text-danger"
-              [hidden]="!editForm.get('longitude')?.errors?.number"
-              jhiTranslate="entity.validation.number"
-            >
-              Ce champ doit être un nombre.
-            </small>
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.presence.lattitude" for="field_lattitude">Lattitude</label>
-          <input type="number" class="form-control" name="lattitude" id="field_lattitude" data-cy="lattitude" formControlName="lattitude" />
-          <div *ngIf="editForm.get('lattitude')!.invalid && (editForm.get('lattitude')!.dirty || editForm.get('lattitude')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="editForm.get('lattitude')?.errors?.required"
-              jhiTranslate="entity.validation.required"
-            >
-              Ce champ est obligatoire.
-            </small>
-            <small
-              class="form-text text-danger"
-              [hidden]="!editForm.get('lattitude')?.errors?.number"
-              jhiTranslate="entity.validation.number"
-            >
-              Ce champ doit être un nombre.
-            </small>
-          </div>
-        </div>
       </div>
 
       <div>

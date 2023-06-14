@@ -17,6 +17,8 @@ public class TravailDTO implements Serializable {
 
     private TypeTravail typeTravail;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
@@ -31,6 +33,14 @@ public class TravailDTO implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
+    public UserDTO getUser() {
+        return user;
     }
 
     public TypeTravail getTypeTravail() {
@@ -69,6 +79,7 @@ public class TravailDTO implements Serializable {
             "id=" + getId() +
             ", date='" + getDate() + "'" +
             ", typeTravail='" + getTypeTravail() + "'" +
+            ", user=" + getUser() +
             "}";
     }
 }

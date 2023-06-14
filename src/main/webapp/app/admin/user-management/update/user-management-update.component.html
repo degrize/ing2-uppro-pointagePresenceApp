@@ -67,6 +67,38 @@
       </div>
 
       <div class="mb-3">
+        <label>Matricule</label>
+        <input type="text" class="form-control" name="matricule" formControlName="matricule" />
+
+        <div *ngIf="editForm.get('matricule')!.invalid && (editForm.get('matricule')!.dirty || editForm.get('matricule')!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('matricule')?.errors?.maxlength"
+            jhiTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 10 }"
+          >
+            Ce champ doit faire moins de 10 caractères.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Adresse</label>
+        <input type="text" class="form-control" name="adresse" formControlName="adresse" />
+
+        <div *ngIf="editForm.get('adresse')!.invalid && (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get('adresse')?.errors?.maxlength"
+            jhiTranslate="entity.validation.maxlength"
+            [translateValues]="{ max: 100 }"
+          >
+            Ce champ doit faire moins de 100 caractères.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
         <label class="form-label" jhiTranslate="userManagement.email">Email</label>
         <input type="email" class="form-control" name="email" formControlName="email" />
 
@@ -130,6 +162,45 @@
           <option *ngFor="let authority of authorities" [value]="authority">{{ authority }}</option>
         </select>
       </div>
+
+      <hr />
+      <p class="underline font-bold">Ajouter au moins une image (La Photo)</p>
+
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <div class="colonneLabel">
+          <label class="form-label" for="field_photo">Photo</label>
+        </div>
+        <div class="colonneInput d-flex align-items-center">
+          <img
+            [src]="'data:' + editForm.get('photoContentType')!.value + ';base64,' + editForm.get('photo')!.value"
+            style="max-height: 100px"
+            *ngIf="editForm.get('photo')!.value"
+            alt="projet image"
+          />
+          <div *ngIf="editForm.get('photo')!.value" class="form-text text-danger clearfix">
+            <span class="pull-start">{{ editForm.get('photoContentType')!.value }}, {{ byteSize(editForm.get('photo')!.value!) }}</span>
+            <button
+              type="button"
+              (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+              class="btn btn-secondary btn-xs pull-end"
+            >
+              <fa-icon icon="times"></fa-icon>
+            </button>
+          </div>
+          <input
+            type="file"
+            class="btn"
+            id="file_photo"
+            data-cy="photo"
+            (change)="setFileData($event, 'photo', true)"
+            accept="image/*"
+            jhiTranslate="entity.action.addimage"
+          />
+        </div>
+        <input type="hidden" class="form-control" name="photo" id="field_photo" data-cy="photo" formControlName="photo" />
+        <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType" formControlName="photoContentType" />
+      </div>
+
       <button type="button" class="btn btn-secondary" (click)="previousState()">
         <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
       </button>

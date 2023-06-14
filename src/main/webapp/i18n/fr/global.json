@@ -137,6 +137,7 @@
     "Size": "Le champ {{fieldName}} ne respecte pas les critères minimum et maximum !",
     "userexists": "Login déjà utilisé !",
     "emailexists": "Email déjà utilisé !",
+    "matriculeexists": "Matricule déjà utilisé !",
     "idexists": "Une nouvelle entité {{entityName}} ne peut pas avoir d'identifiant !",
     "idnull": "Identifiant invalide",
     "idinvalid": "Invalid Id",

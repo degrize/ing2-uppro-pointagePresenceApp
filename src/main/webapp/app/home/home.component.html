@@ -10,10 +10,47 @@
       <ng-container *ngSwitchCase="true">
         <button (click)="showDialog()" class="btnDemarrer mt-4">Démarrer</button>
         <p-dialog header=" " [(visible)]="visible" [style]="{ width: '50vw' }" [maximizable]="true">
-          <div class="d-flex justify-content-center align-items-center flex-column gap-3">
-            <textarea class="inputWork" placeholder="Renseignez votre travail de la journée" pInputTextarea></textarea>
-            <p-button label="Je valide ma présence" styleClass="p-button-raised p-button-text" (click)="checkPointInPolygon()"> </p-button>
-          </div>
+          <form name="editForm" role="form" novalidate (ngSubmit)="checkPointInPolygon()" [formGroup]="editForm">
+            <div class="d-flex justify-content-center align-items-center flex-column gap-3">
+              <div class="row mb-3">
+                <label class="form-label" jhiTranslate="pointagePresenceApp.presence.horaire" for="field_horaire">Horaire</label>
+                <select class="form-control" name="horaire" formControlName="horaire" id="field_horaire" data-cy="horaire">
+                  <option [ngValue]="null">{{ 'pointagePresenceApp.HoraireType.null' | translate }}</option>
+                  <option *ngFor="let horaireType of horaireTypeValues" [value]="horaireType">
+                    {{ 'pointagePresenceApp.HoraireType.' + horaireType | translate }}
+                  </option>
+                </select>
+                <div *ngIf="editForm.get('horaire')!.invalid && (editForm.get('horaire')!.dirty || editForm.get('horaire')!.touched)">
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="editForm.get('horaire')?.errors?.required"
+                    jhiTranslate="entity.validation.required"
+                  >
+                    Ce champ est obligatoire.
+                  </small>
+                </div>
+              </div>
+
+              <textarea
+                class="inputWork"
+                placeholder="Renseignez votre travail de la journée"
+                pInputTextarea
+                formControlName="bilan"
+                name="bilan"
+                id="field_bilan"
+                data-cy="bilan"
+              ></textarea>
+              <p-button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid"
+                label="Je valide ma présence"
+                styleClass="p-button-raised p-button-text"
+              >
+              </p-button>
+            </div>
+          </form>
         </p-dialog>
 
         <p-toast key="positionSuccessToast"></p-toast>

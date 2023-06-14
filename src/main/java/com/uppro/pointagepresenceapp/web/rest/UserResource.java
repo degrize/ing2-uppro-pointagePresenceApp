@@ -10,6 +10,7 @@ import com.uppro.pointagepresenceapp.service.dto.AdminUserDTO;
 import com.uppro.pointagepresenceapp.web.rest.errors.BadRequestAlertException;
 import com.uppro.pointagepresenceapp.web.rest.errors.EmailAlreadyUsedException;
 import com.uppro.pointagepresenceapp.web.rest.errors.LoginAlreadyUsedException;
+import com.uppro.pointagepresenceapp.web.rest.errors.MatriculeAlreadyUsedException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
@@ -66,6 +67,10 @@ public class UserResource {
             "login",
             "firstName",
             "lastName",
+            "matricule",
+            "adresse",
+            "photo",
+            "photoContentType",
             "email",
             "activated",
             "langKey",
@@ -117,6 +122,8 @@ public class UserResource {
             throw new LoginAlreadyUsedException();
         } else if (userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).isPresent()) {
             throw new EmailAlreadyUsedException();
+        } else if (userRepository.findOneByMatriculeIgnoreCase(userDTO.getMatricule()).isPresent()) {
+            throw new MatriculeAlreadyUsedException();
         } else {
             User newUser = userService.createUser(userDTO);
             mailService.sendCreationEmail(newUser);
@@ -147,6 +154,11 @@ public class UserResource {
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(userDTO.getId()))) {
             throw new LoginAlreadyUsedException();
         }
+        existingUser = userRepository.findOneByMatriculeIgnoreCase(userDTO.getMatricule());
+        if (existingUser.isPresent() && (!existingUser.get().getId().equals(userDTO.getId()))) {
+            throw new MatriculeAlreadyUsedException();
+        }
+
         Optional<AdminUserDTO> updatedUser = userService.updateUser(userDTO);
 
         return ResponseUtil.wrapOrNotFound(

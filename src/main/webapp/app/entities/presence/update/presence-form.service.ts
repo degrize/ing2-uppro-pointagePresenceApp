@@ -56,17 +56,19 @@ export class PresenceFormService {
         }
       ),
       date: new FormControl(presenceRawValue.date, {
-        validators: [Validators.required],
+        //validators: [Validators.required],
       }),
       horaire: new FormControl(presenceRawValue.horaire, {
         validators: [Validators.required],
       }),
-      bilan: new FormControl(presenceRawValue.bilan),
-      longitude: new FormControl(presenceRawValue.longitude, {
+      bilan: new FormControl(presenceRawValue.bilan, {
         validators: [Validators.required],
       }),
+      longitude: new FormControl(presenceRawValue.longitude, {
+        // validators: [Validators.required],
+      }),
       lattitude: new FormControl(presenceRawValue.lattitude, {
-        validators: [Validators.required],
+        //validators: [Validators.required],
       }),
     });
   }

@@ -1,11 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { finalize, takeUntil } from 'rxjs/operators';
 
 import { AccountService } from 'app/core/auth/account.service';
 import { Account } from 'app/core/auth/account.model';
 import { MessageService } from 'primeng/api';
+import { HttpResponse } from '@angular/common/http';
+import { IPresence } from '../entities/presence/presence.model';
+import { PresenceFormGroup, PresenceFormService } from '../entities/presence/update/presence-form.service';
+import { PresenceService } from '../entities/presence/service/presence.service';
+import { UserManagementService } from '../admin/user-management/service/user-management.service';
+import { IUser, User } from '../admin/user-management/user-management.model';
+import dayjs from 'dayjs/esm';
+import { HoraireType } from '../entities/enumerations/horaire-type.model';
 
 @Component({
   selector: 'jhi-home',
@@ -16,6 +24,13 @@ import { MessageService } from 'primeng/api';
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
   visible: boolean = false;
+  user: IUser = { id: 1, login: '' };
+  userId: number | null = null;
+  lat: number | null = null;
+  long: number | null = null;
+  isSaving = false;
+
+  horaireTypeValues = Object.keys(HoraireType);
 
   delimitedZone = [
     [1, 1],
@@ -27,18 +42,38 @@ export class HomeComponent implements OnInit, OnDestroy {
   positionUser = [0, 0];
   private readonly destroy$ = new Subject<void>();
 
+  editForm: PresenceFormGroup = this.presenceFormService.createPresenceFormGroup();
+
   constructor(
     private accountService: AccountService,
     private router: Router,
     private messageServiceSuccess: MessageService,
-    private messageServiceDeny: MessageService
+    private messageServiceDeny: MessageService,
+    protected presenceFormService: PresenceFormService,
+    protected presenceService: PresenceService,
+    private userManagementService: UserManagementService
   ) {}
 
   ngOnInit(): void {
     this.accountService
       .getAuthenticationState()
       .pipe(takeUntil(this.destroy$))
-      .subscribe(account => (this.account = account));
+      .subscribe(account => {
+        this.account = account;
+        if (account) {
+          const login = account.login;
+          if (login) {
+            this.userManagementService.find(login).subscribe({
+              next: (res: User) => {
+                if (res.id) {
+                  this.user = res;
+                }
+              },
+              error: () => 'ERREUR',
+            });
+          }
+        }
+      });
   }
 
   showDialog() {
@@ -74,12 +109,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getCurrentPosition(): any {
     navigator.geolocation.getCurrentPosition(position => {
-      let lat = position.coords.latitude;
-      let long = position.coords.longitude;
-      this.positionUser = [lat, long];
-
+      this.lat = position.coords.latitude;
+      this.long = position.coords.longitude;
+      this.positionUser = [this.lat, this.long];
+      console.log(this.user);
       if (this.checkoutPointInPolygon(this.delimitedZone, this.positionUser)) {
         this.showPositionSuccessToast();
+        this.save(); // On peut sauvegarder
       } else {
         this.showPositionDenyToast();
       }
@@ -104,6 +140,36 @@ export class HomeComponent implements OnInit, OnDestroy {
       detail: "Votre presence n'a pas été enregistrée",
       sticky: true,
     });
+  }
+
+  save(): void {
+    const presence = this.presenceFormService.getPresence(this.editForm);
+    if (presence.id === null) {
+      presence.user = this.user;
+      presence.date = dayjs(); // current Time
+      presence.lattitude = this.lat;
+      presence.longitude = this.long;
+      this.subscribeToSaveResponse(this.presenceService.create(presence));
+    }
+  }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<IPresence>>): void {
+    result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
+      next: () => this.onSaveSuccess(),
+      error: () => this.onSaveError(),
+    });
+  }
+
+  protected onSaveSuccess(): void {
+    //
+  }
+
+  protected onSaveError(): void {
+    // Api for inheritance.
+  }
+
+  protected onSaveFinalize(): void {
+    // this.isSaving = false;
   }
 
   clearToastDeny() {

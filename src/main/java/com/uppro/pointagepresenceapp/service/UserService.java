@@ -117,6 +117,10 @@ public class UserService {
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName(userDTO.getLastName());
+        newUser.setMatricule(userDTO.getMatricule().toUpperCase());
+        newUser.setAdresse(userDTO.getAdresse());
+        newUser.setPhoto(userDTO.getPhoto());
+        newUser.setPhotoContentType(userDTO.getPhotoContentType());
         if (userDTO.getEmail() != null) {
             newUser.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -150,6 +154,10 @@ public class UserService {
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
+        user.setMatricule(userDTO.getMatricule().toUpperCase());
+        user.setAdresse(userDTO.getAdresse());
+        user.setPhoto(userDTO.getPhoto());
+        user.setPhotoContentType(userDTO.getPhotoContentType());
         if (userDTO.getEmail() != null) {
             user.setEmail(userDTO.getEmail().toLowerCase());
         }
@@ -196,6 +204,10 @@ public class UserService {
                 user.setLogin(userDTO.getLogin().toLowerCase());
                 user.setFirstName(userDTO.getFirstName());
                 user.setLastName(userDTO.getLastName());
+                user.setMatricule(userDTO.getMatricule().toUpperCase());
+                user.setAdresse(userDTO.getAdresse());
+                user.setPhoto(userDTO.getPhoto());
+                user.setPhotoContentType(userDTO.getPhotoContentType());
                 if (userDTO.getEmail() != null) {
                     user.setEmail(userDTO.getEmail().toLowerCase());
                 }
@@ -237,13 +249,27 @@ public class UserService {
      * @param langKey   language key.
      * @param imageUrl  image URL of user.
      */
-    public void updateUser(String firstName, String lastName, String email, String langKey, String imageUrl) {
+    public void updateUser(
+        String firstName,
+        String lastName,
+        String matricule,
+        String adresse,
+        byte[] photo,
+        String photoContentType,
+        String email,
+        String langKey,
+        String imageUrl
+    ) {
         SecurityUtils
             .getCurrentUserLogin()
             .flatMap(userRepository::findOneByLogin)
             .ifPresent(user -> {
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
+                user.setMatricule(matricule.toUpperCase());
+                user.setAdresse(adresse);
+                user.setPhoto(photo);
+                user.setPhotoContentType(photoContentType);
                 if (email != null) {
                     user.setEmail(email.toLowerCase());
                 }

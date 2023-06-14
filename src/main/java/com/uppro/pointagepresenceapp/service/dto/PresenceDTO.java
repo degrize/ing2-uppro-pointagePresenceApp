@@ -28,6 +28,8 @@ public class PresenceDTO implements Serializable {
     @NotNull
     private Double lattitude;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
@@ -42,6 +44,14 @@ public class PresenceDTO implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     public HoraireType getHoraire() {
@@ -107,6 +117,7 @@ public class PresenceDTO implements Serializable {
             ", bilan='" + getBilan() + "'" +
             ", longitude=" + getLongitude() +
             ", lattitude=" + getLattitude() +
+            ", user=" + getUser() +
             "}";
     }
 }

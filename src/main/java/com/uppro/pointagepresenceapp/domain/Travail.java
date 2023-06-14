@@ -1,5 +1,6 @@
 package com.uppro.pointagepresenceapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.uppro.pointagepresenceapp.domain.enumeration.TypeTravail;
 import java.io.Serializable;
 import java.time.Instant;
@@ -31,6 +32,10 @@ public class Travail implements Serializable {
     @Column(name = "type_travail")
     private TypeTravail typeTravail;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = { "travails", "zones", "presences" }, allowSetters = true)
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -57,6 +62,19 @@ public class Travail implements Serializable {
 
     public void setDate(Instant date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Travail user(User user) {
+        this.setUser(user);
+        return this;
     }
 
     public TypeTravail getTypeTravail() {
@@ -98,6 +116,7 @@ public class Travail implements Serializable {
             "id=" + getId() +
             ", date='" + getDate() + "'" +
             ", typeTravail='" + getTypeTravail() + "'" +
+            ", user=" + getUser() +
             "}";
     }
 }

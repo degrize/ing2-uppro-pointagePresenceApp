@@ -29,6 +29,15 @@ public class AdminUserDTO implements Serializable {
     @Size(max = 50)
     private String lastName;
 
+    @Size(max = 10)
+    private String matricule;
+
+    @Size(max = 100)
+    private String adresse;
+
+    private byte[] photo;
+    private String photoContentType;
+
     @Email
     @Size(min = 5, max = 254)
     private String email;
@@ -60,6 +69,10 @@ public class AdminUserDTO implements Serializable {
         this.login = user.getLogin();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
+        this.matricule = user.getMatricule();
+        this.adresse = user.getAdresse();
+        this.photo = user.getPhoto();
+        this.photoContentType = user.getPhotoContentType();
         this.email = user.getEmail();
         this.activated = user.isActivated();
         this.imageUrl = user.getImageUrl();
@@ -101,6 +114,38 @@ public class AdminUserDTO implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getMatricule() {
+        return matricule;
+    }
+
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoContentType() {
+        return photoContentType;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
     }
 
     public String getEmail() {
@@ -182,6 +227,10 @@ public class AdminUserDTO implements Serializable {
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", matricule='" + matricule + '\'' +
+            ", adresse='" + adresse + '\'' +
+            ", photo='" + photo  + '\'' +
+            ", photoContentType='" + photoContentType  + '\'' +
             ", email='" + email + '\'' +
             ", imageUrl='" + imageUrl + '\'' +
             ", activated=" + activated +

@@ -20,6 +20,8 @@ public class ZoneDTO implements Serializable {
 
     private Point pointD;
 
+    private UserDTO user;
+
     public Long getId() {
         return id;
     }
@@ -60,6 +62,14 @@ public class ZoneDTO implements Serializable {
         this.pointD = pointD;
     }
 
+    public void setUser(UserDTO user) {
+        this.user = user;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -90,6 +100,7 @@ public class ZoneDTO implements Serializable {
             ", pointB='" + getPointB() + "'" +
             ", pointC='" + getPointC() + "'" +
             ", pointD='" + getPointD() + "'" +
+            ", user=" + getUser() +
             "}";
     }
 }
