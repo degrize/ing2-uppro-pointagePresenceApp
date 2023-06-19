@@ -9,7 +9,7 @@ export interface IPresence {
   bilan?: string | null;
   longitude?: number | null;
   lattitude?: number | null;
-  user?: Pick<IUser, 'id' | 'login'> | null;
+  user?: Pick<IUser, 'id' | 'login' | 'firstName' | 'lastName' | 'matricule'> | null;
 }
 
 export type NewPresence = Omit<IPresence, 'id'> & { id: null };

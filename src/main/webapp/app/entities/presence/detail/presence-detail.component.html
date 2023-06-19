@@ -14,6 +14,18 @@
         <dd>
           <span>{{ presence.id }}</span>
         </dd>
+        <dt><span>Mattricule</span></dt>
+        <dd>
+          <span>{{ presence.user?.matricule }}</span>
+        </dd>
+        <dt><span>Nom</span></dt>
+        <dd>
+          <span>{{ presence.user?.lastName }}</span>
+        </dd>
+        <dt><span>Prénom</span></dt>
+        <dd>
+          <span>{{ presence.user?.firstName }}</span>
+        </dd>
         <dt><span jhiTranslate="pointagePresenceApp.presence.date">Date</span></dt>
         <dd>
           <span>{{ presence.date | formatMediumDatetime }}</span>

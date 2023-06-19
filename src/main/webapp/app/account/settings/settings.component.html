@@ -98,6 +98,42 @@
         </div>
 
         <div class="mb-3">
+          <label>Matricule</label>
+          <input type="text" class="form-control" name="matricule" formControlName="matricule" />
+
+          <div
+            *ngIf="
+              settingsForm.get('matricule')!.invalid && (settingsForm.get('matricule')!.dirty || settingsForm.get('matricule')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('matricule')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 10 }"
+            >
+              Ce champ doit faire moins de 10 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label>Adresse</label>
+          <input type="text" class="form-control" name="adresse" formControlName="adresse" />
+
+          <div *ngIf="settingsForm.get('adresse')!.invalid && (settingsForm.get('adresse')!.dirty || settingsForm.get('adresse')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="settingsForm.get('adresse')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 100 }"
+            >
+              Ce champ doit faire moins de 100 caractères.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
           <label class="form-label" for="email" jhiTranslate="global.form.email.label">Email</label>
           <input
             type="email"
@@ -150,6 +186,48 @@
             <option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</option>
           </select>
         </div>
+
+        <hr />
+        <p class="underline font-bold">Ajouter au moins une image (La Photo)</p>
+
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <div class="colonneLabel">
+            <label class="form-label">Photo</label>
+          </div>
+          <div class="colonneInput d-flex align-items-center">
+            <img
+              [src]="'data:' + settingsForm.get('photoContentType')!.value + ';base64,' + settingsForm.get('photo')!.value"
+              style="max-height: 100px"
+              *ngIf="settingsForm.get('photo')!.value"
+              alt="projet image"
+            />
+            <div *ngIf="settingsForm.get('photo')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start"
+                >{{ settingsForm.get('photoContentType')!.value }}, {{ byteSize(settingsForm.get('photo')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('photo', 'photoContentType', 'file_photo')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              class="btn"
+              id="file_photo"
+              data-cy="photo"
+              (change)="setFileData($event, 'photo', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
 
         <button
           type="submit"

@@ -38,6 +38,24 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="user.matricule">
+            <div class="d-flex">
+              <span>Matricule</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.lastName">
+            <div class="d-flex">
+              <span>Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.firstName">
+            <div class="d-flex">
+              <span>Prénom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span jhiTranslate="pointagePresenceApp.presence.date">Date</span>
@@ -56,18 +74,6 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="longitude">
-            <div class="d-flex">
-              <span jhiTranslate="pointagePresenceApp.presence.longitude">Longitude</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
-          <th scope="col" jhiSortBy="lattitude">
-            <div class="d-flex">
-              <span jhiTranslate="pointagePresenceApp.presence.lattitude">Lattitude</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
-            </div>
-          </th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -76,11 +82,12 @@
           <td>
             <a [routerLink]="['/presence', presence.id, 'view']">{{ presence.id }}</a>
           </td>
+          <td>{{ presence.user?.matricule }}</td>
+          <td>{{ presence.user?.lastName }}</td>
+          <td>{{ presence.user?.firstName }}</td>
           <td>{{ presence.date | formatMediumDatetime }}</td>
           <td jhiTranslate="{{ 'pointagePresenceApp.HoraireType.' + presence.horaire }}">{{ presence.horaire }}</td>
           <td>{{ presence.bilan }}</td>
-          <td>{{ presence.longitude }}</td>
-          <td>{{ presence.lattitude }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button

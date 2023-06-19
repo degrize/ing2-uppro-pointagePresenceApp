@@ -14,6 +14,15 @@
           <span *ngIf="!user.activated" class="badge bg-danger" jhiTranslate="userManagement.deactivated">Désactivé</span>
         </dd>
 
+        <dt><span>Mattricule</span></dt>
+        <dd>
+          <span>{{ user?.matricule }}</span>
+        </dd>
+        <dt><span>Adresse</span></dt>
+        <dd>
+          <span>{{ user?.adresse }}</span>
+        </dd>
+
         <dt><span jhiTranslate="userManagement.firstName">Prénom</span></dt>
         <dd>{{ user.firstName }}</dd>
 

@@ -101,7 +101,9 @@ export class UserManagementUpdateComponent implements OnInit {
   setFileData(event: Event, field: string, isImage: boolean): void {
     this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
       error: (err: FileLoadError) =>
-        this.eventManager.broadcast(new EventWithContent<AlertError>('hseApplicationApp.error', { ...err, key: 'error.file.' + err.key })),
+        this.eventManager.broadcast(
+          new EventWithContent<AlertError>('PointagePresenceApp.error', { ...err, key: 'error.file.' + err.key })
+        ),
     });
   }
 

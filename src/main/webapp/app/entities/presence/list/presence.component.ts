@@ -90,6 +90,7 @@ export class PresenceComponent implements OnInit {
     this.fillComponentAttributesFromResponseHeader(response.headers);
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
     this.presences = dataFromBody;
+    console.log(this.presences);
   }
 
   protected fillComponentAttributesFromResponseBody(data: IPresence[] | null): IPresence[] {

@@ -33,12 +33,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   horaireTypeValues = Object.keys(HoraireType);
 
   delimitedZone = [
-    [1, 1],
-    [1, 2],
-    [2, 2],
-    [2, 1],
+    [6.8812189, -5.2303786],
+    [6.8811967, -5.2304598],
+    [6.8812405, -5.2304864],
+    [6.8813213, -5.2304864],
     // add more coordinates as needed
   ];
+
+  // elimitedZone = [
+  //   [6.8812189, -5.2303786],
+  //   [6.8813213, -5.2304864],
+  //   [6.8812405, -5.2304864],
+  //   [6.8811967, -5.2304598],
+  //   // add more coordinates as needed
+  // ];
+
   positionUser = [0, 0];
   private readonly destroy$ = new Subject<void>();
 
@@ -112,6 +121,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
       this.positionUser = [this.lat, this.long];
+      // this.positionUser = [1.5, 0];
+      console.log('POsition User');
+      console.log(this.positionUser);
       console.log(this.user);
       if (this.checkoutPointInPolygon(this.delimitedZone, this.positionUser)) {
         this.showPositionSuccessToast();
