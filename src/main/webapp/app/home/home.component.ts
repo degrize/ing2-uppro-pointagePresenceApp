@@ -142,24 +142,22 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getCurrentPosition(): any {
     navigator.geolocation.getCurrentPosition(position => {
-      this.lat = 0;
-      this.long = 0;
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
       this.positionUser = [this.lat, this.long];
       console.log(this.user);
       console.log(this.positionUser);
-      let inputs = document.getElementsByTagName('input');
-      for (let i = 0; i < inputs.length; i++) {
-        if (inputs[i].id == 'postionUserY') {
-          this.Uy = parseInt(inputs[i].value);
-        }
-        if (inputs[i].id == 'postionUserX') {
-          this.Ux = parseInt(inputs[i].value);
-        }
-      }
-      this.positionUser = [0, 16];
-      this.positionUser = [this.Ux, this.Uy];
+      // let inputs = document.getElementsByTagName('input');
+      // for (let i = 0; i < inputs.length; i++) {
+      //   if (inputs[i].id == 'postionUserY') {
+      //     this.Uy = parseInt(inputs[i].value);
+      //   }
+      //   if (inputs[i].id == 'postionUserX') {
+      //     this.Ux = parseInt(inputs[i].value);
+      //   }
+      // }
+      //this.positionUser = [0, 16];
+      //this.positionUser = [this.Ux, this.Uy];
       console.log(this.positionUser);
       if (this.checkoutPointInPolygon(this.delimitedZone, this.positionUser)) {
         this.showPositionSuccessToast();
