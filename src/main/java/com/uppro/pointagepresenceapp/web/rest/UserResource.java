@@ -154,10 +154,6 @@ public class UserResource {
         if (existingUser.isPresent() && (!existingUser.get().getId().equals(userDTO.getId()))) {
             throw new LoginAlreadyUsedException();
         }
-        existingUser = userRepository.findOneByMatriculeIgnoreCase(userDTO.getMatricule());
-        if (existingUser.isPresent() && (!existingUser.get().getId().equals(userDTO.getId()))) {
-            throw new MatriculeAlreadyUsedException();
-        }
 
         Optional<AdminUserDTO> updatedUser = userService.updateUser(userDTO);
 

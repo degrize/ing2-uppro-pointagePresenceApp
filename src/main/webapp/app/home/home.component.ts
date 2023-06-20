@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   isSaving = false;
 
   horaireTypeValues = Object.keys(HoraireType);
+  Ux = 0.0;
+  Uy = 0.0;
 
   delimitedZone = [
     // LE LARIT
@@ -101,7 +103,6 @@ export class HomeComponent implements OnInit, OnDestroy {
               [this.lastZone.dx, this.lastZone.dy],
             ];
           }
-          console.log(this.delimitedZone);
         }
       },
       error: () => 'ERREUR WHEN WE FIND LAST ZONE',
@@ -141,10 +142,25 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getCurrentPosition(): any {
     navigator.geolocation.getCurrentPosition(position => {
+      this.lat = 0;
+      this.long = 0;
       this.lat = position.coords.latitude;
       this.long = position.coords.longitude;
       this.positionUser = [this.lat, this.long];
-      // this.positionUser = [1.5, 0];
+      console.log(this.user);
+      console.log(this.positionUser);
+      let inputs = document.getElementsByTagName('input');
+      for (let i = 0; i < inputs.length; i++) {
+        if (inputs[i].id == 'postionUserY') {
+          this.Uy = parseInt(inputs[i].value);
+        }
+        if (inputs[i].id == 'postionUserX') {
+          this.Ux = parseInt(inputs[i].value);
+        }
+      }
+      this.positionUser = [0, 16];
+      this.positionUser = [this.Ux, this.Uy];
+      console.log(this.positionUser);
       if (this.checkoutPointInPolygon(this.delimitedZone, this.positionUser)) {
         this.showPositionSuccessToast();
         this.save(); // On peut sauvegarder

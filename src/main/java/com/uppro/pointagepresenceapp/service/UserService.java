@@ -117,7 +117,7 @@ public class UserService {
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(userDTO.getFirstName());
         newUser.setLastName(userDTO.getLastName());
-        newUser.setMatricule(userDTO.getMatricule().toUpperCase());
+        newUser.setMatricule((userDTO.getMatricule() + "").toUpperCase());
         newUser.setAdresse(userDTO.getAdresse());
         newUser.setPhoto(userDTO.getPhoto());
         newUser.setPhotoContentType(userDTO.getPhotoContentType());
@@ -154,7 +154,7 @@ public class UserService {
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
-        user.setMatricule(userDTO.getMatricule().toUpperCase());
+        user.setMatricule((userDTO.getMatricule() + "").toUpperCase());
         user.setAdresse(userDTO.getAdresse());
         user.setPhoto(userDTO.getPhoto());
         user.setPhotoContentType(userDTO.getPhotoContentType());
@@ -204,7 +204,7 @@ public class UserService {
                 user.setLogin(userDTO.getLogin().toLowerCase());
                 user.setFirstName(userDTO.getFirstName());
                 user.setLastName(userDTO.getLastName());
-                user.setMatricule(userDTO.getMatricule().toUpperCase());
+                user.setMatricule((userDTO.getMatricule() + "").toUpperCase());
                 user.setAdresse(userDTO.getAdresse());
                 user.setPhoto(userDTO.getPhoto());
                 user.setPhotoContentType(userDTO.getPhotoContentType());
@@ -266,7 +266,7 @@ public class UserService {
             .ifPresent(user -> {
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
-                user.setMatricule(matricule.toUpperCase());
+                user.setMatricule((matricule + "").toUpperCase());
                 user.setAdresse(adresse);
                 user.setPhoto(photo);
                 user.setPhotoContentType(photoContentType);
