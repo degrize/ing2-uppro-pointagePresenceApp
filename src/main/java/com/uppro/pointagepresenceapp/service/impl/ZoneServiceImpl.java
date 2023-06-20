@@ -81,4 +81,9 @@ public class ZoneServiceImpl implements ZoneService {
         log.debug("Request to delete Zone : {}", id);
         zoneRepository.deleteById(id);
     }
+
+    @Override
+    public Zone getLastZone() {
+        return zoneRepository.findTopByOrderByIdDesc();
+    }
 }

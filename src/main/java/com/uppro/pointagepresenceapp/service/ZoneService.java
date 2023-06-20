@@ -1,5 +1,6 @@
 package com.uppro.pointagepresenceapp.service;
 
+import com.uppro.pointagepresenceapp.domain.Zone;
 import com.uppro.pointagepresenceapp.service.dto.ZoneDTO;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -55,4 +56,6 @@ public interface ZoneService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Zone getLastZone();
 }

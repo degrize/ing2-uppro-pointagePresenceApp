@@ -12,11 +12,20 @@ import { Point } from 'app/entities/enumerations/point.model';
 @Component({
   selector: 'jhi-zone-update',
   templateUrl: './zone-update.component.html',
+  styleUrls: ['./zone-update.component.scss'],
 })
 export class ZoneUpdateComponent implements OnInit {
   isSaving = false;
   zone: IZone | null = null;
   pointValues = Object.keys(Point);
+  Ax = null;
+  Ay = null;
+  Bx = null;
+  By = null;
+  Cx = null;
+  Cy = null;
+  Dx = null;
+  Dy = null;
 
   editForm: ZoneFormGroup = this.zoneFormService.createZoneFormGroup();
 
@@ -41,7 +50,8 @@ export class ZoneUpdateComponent implements OnInit {
     if (zone.id !== null) {
       this.subscribeToSaveResponse(this.zoneService.update(zone));
     } else {
-      this.subscribeToSaveResponse(this.zoneService.create(zone));
+      alert("veuillez contacter l'ADMIN");
+      // this.subscribeToSaveResponse(this.zoneService.create(zone));
     }
   }
 

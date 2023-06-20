@@ -14,35 +14,65 @@
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.zone.pointA" for="field_pointA">Point A</label>
-          <select class="form-control" name="pointA" formControlName="pointA" id="field_pointA" data-cy="pointA">
-            <option [ngValue]="null">{{ 'pointagePresenceApp.Point.null' | translate }}</option>
-            <option *ngFor="let point of pointValues" [value]="point">{{ 'pointagePresenceApp.Point.' + point | translate }}</option>
-          </select>
+          <label class="form-label" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.zone.pointB" for="field_pointB">Point B</label>
-          <select class="form-control" name="pointB" formControlName="pointB" id="field_pointB" data-cy="pointB">
-            <option [ngValue]="null">{{ 'pointagePresenceApp.Point.null' | translate }}</option>
-            <option *ngFor="let point of pointValues" [value]="point">{{ 'pointagePresenceApp.Point.' + point | translate }}</option>
-          </select>
+          <label class="form-label labelPoint" jhiTranslate="pointagePresenceApp.zone.pointA">Point A</label>
+
+          <div class="d-flex flex-row gap-3 flex-wrap justify-content-center">
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">X</span>
+              <input type="number" pInputText formControlName="ax" name="ax" placeholder="6.8812189" />
+            </div>
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">Y</span>
+              <input type="number" pInputText placeholder="-5.2303786" name="ay" formControlName="ay" />
+            </div>
+          </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.zone.pointC" for="field_pointC">Point C</label>
-          <select class="form-control" name="pointC" formControlName="pointC" id="field_pointC" data-cy="pointC">
-            <option [ngValue]="null">{{ 'pointagePresenceApp.Point.null' | translate }}</option>
-            <option *ngFor="let point of pointValues" [value]="point">{{ 'pointagePresenceApp.Point.' + point | translate }}</option>
-          </select>
+          <label class="form-label labelPoint" jhiTranslate="pointagePresenceApp.zone.pointB">Point B</label>
+          <div class="d-flex flex-row gap-3 flex-wrap justify-content-center">
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">X</span>
+              <input type="number" pInputText placeholder="6.8812189" name="bx" formControlName="bx" />
+            </div>
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">Y</span>
+              <input type="number" pInputText placeholder="-5.2303786" name="by" formControlName="by" />
+            </div>
+          </div>
         </div>
 
         <div class="row mb-3">
-          <label class="form-label" jhiTranslate="pointagePresenceApp.zone.pointD" for="field_pointD">Point D</label>
-          <select class="form-control" name="pointD" formControlName="pointD" id="field_pointD" data-cy="pointD">
-            <option [ngValue]="null">{{ 'pointagePresenceApp.Point.null' | translate }}</option>
-            <option *ngFor="let point of pointValues" [value]="point">{{ 'pointagePresenceApp.Point.' + point | translate }}</option>
-          </select>
+          <label class="form-label labelPoint" jhiTranslate="pointagePresenceApp.zone.pointC">Point C</label>
+          <div class="d-flex flex-row gap-3 flex-wrap justify-content-center">
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">X</span>
+              <input type="number" pInputText formControlName="cx" name="cx" placeholder="6.8812189" />
+            </div>
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">Y</span>
+              <input type="number" pInputText placeholder="-5.2303786" name="cy" formControlName="cy" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label labelPoint" jhiTranslate="pointagePresenceApp.zone.pointD">Point D</label>
+          <div class="d-flex flex-row gap-3 flex-wrap justify-content-center">
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">X</span>
+              <input type="number" pInputText formControlName="dx" name="dx" placeholder="6.8812189" />
+            </div>
+            <div class="p-inputgroup inputPoint">
+              <span class="p-inputgroup-addon">Y</span>
+              <input type="number" pInputText placeholder="-5.2303786" name="dy" formControlName="dy" />
+            </div>
+          </div>
         </div>
       </div>
 

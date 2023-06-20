@@ -18,6 +18,15 @@ type ZoneFormDefaults = Pick<NewZone, 'id'>;
 
 type ZoneFormGroupContent = {
   id: FormControl<IZone['id'] | NewZone['id']>;
+  ax: FormControl<IZone['ax']>;
+  ay: FormControl<IZone['ay']>;
+  bx: FormControl<IZone['bx']>;
+  by: FormControl<IZone['by']>;
+  cx: FormControl<IZone['cx']>;
+  cy: FormControl<IZone['cy']>;
+  dx: FormControl<IZone['dx']>;
+  dy: FormControl<IZone['dy']>;
+  nom: FormControl<IZone['nom']>;
   pointA: FormControl<IZone['pointA']>;
   pointB: FormControl<IZone['pointB']>;
   pointC: FormControl<IZone['pointC']>;
@@ -42,6 +51,41 @@ export class ZoneFormService {
         }
       ),
       pointA: new FormControl(zoneRawValue.pointA),
+      nom: new FormControl(zoneRawValue.nom, {
+        validators: [Validators.required],
+      }),
+      ax: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      ay: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      bx: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      by: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      cx: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      cy: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      dx: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      dy: new FormControl(0.0, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
       pointB: new FormControl(zoneRawValue.pointB),
       pointC: new FormControl(zoneRawValue.pointC),
       pointD: new FormControl(zoneRawValue.pointD),

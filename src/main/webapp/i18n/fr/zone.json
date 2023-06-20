@@ -4,15 +4,15 @@
       "home": {
         "title": "Zones",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Zone",
-        "createOrEditLabel": "Créer ou éditer un Zone",
-        "notFound": "Aucun Zone trouvé"
+        "createLabel": "Créer une nouvelle Zone",
+        "createOrEditLabel": "Créer ou éditer une Zone",
+        "notFound": "Aucune Zone trouvée"
       },
-      "created": "Un nouveau Zone a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Zone avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Zone avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Zone a été créée avec l'identifiant {{ param }}",
+      "updated": "La Zone avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Zone avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Zone {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Zone {{ id }} ?"
       },
       "detail": {
         "title": "Zone"

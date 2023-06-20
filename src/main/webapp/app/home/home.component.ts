@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { combineLatest, Observable, Subject, switchMap, tap } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 
 import { AccountService } from 'app/core/auth/account.service';
@@ -14,6 +14,8 @@ import { UserManagementService } from '../admin/user-management/service/user-man
 import { IUser, User } from '../admin/user-management/user-management.model';
 import dayjs from 'dayjs/esm';
 import { HoraireType } from '../entities/enumerations/horaire-type.model';
+import { EntityArrayResponseType, ZoneService } from '../entities/zone/service/zone.service';
+import { IZone } from '../entities/zone/zone.model';
 
 @Component({
   selector: 'jhi-home',
@@ -23,6 +25,7 @@ import { HoraireType } from '../entities/enumerations/horaire-type.model';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   account: Account | null = null;
+  lastZone: IZone | null = null;
   visible: boolean = false;
   user: IUser = { id: 1, login: '' };
   userId: number | null = null;
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   horaireTypeValues = Object.keys(HoraireType);
 
   delimitedZone = [
+    // LE LARIT
     [6.8812189, -5.2303786],
     [6.8811967, -5.2304598],
     [6.8812405, -5.2304864],
@@ -55,6 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private accountService: AccountService,
+    protected zoneService: ZoneService,
     private router: Router,
     private messageServiceSuccess: MessageService,
     private messageServiceDeny: MessageService,
@@ -78,11 +83,29 @@ export class HomeComponent implements OnInit, OnDestroy {
                   this.user = res;
                 }
               },
-              error: () => 'ERREUR',
+              error: () => 'ERREUR WHEN WE FIND USER',
             });
           }
         }
       });
+
+    this.zoneService.getLastZone().subscribe({
+      next: (res: IZone) => {
+        if (res.id) {
+          this.lastZone = res;
+          if (this.lastZone?.id) {
+            this.delimitedZone = [
+              [this.lastZone.ax, this.lastZone.ay],
+              [this.lastZone.bx, this.lastZone.by],
+              [this.lastZone.cx, this.lastZone.cy],
+              [this.lastZone.dx, this.lastZone.dy],
+            ];
+          }
+          console.log(this.delimitedZone);
+        }
+      },
+      error: () => 'ERREUR WHEN WE FIND LAST ZONE',
+    });
   }
 
   showDialog() {
@@ -122,9 +145,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.long = position.coords.longitude;
       this.positionUser = [this.lat, this.long];
       // this.positionUser = [1.5, 0];
-      console.log('POsition User');
-      console.log(this.positionUser);
-      console.log(this.user);
       if (this.checkoutPointInPolygon(this.delimitedZone, this.positionUser)) {
         this.showPositionSuccessToast();
         this.save(); // On peut sauvegarder

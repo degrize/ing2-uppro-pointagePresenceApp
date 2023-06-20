@@ -17,6 +17,9 @@ Navbar
 
 .navbar {
   padding: 0.2rem 1rem;
+  z-index: 9999;
+  border-radius: 15px;
+  box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.5);
 
   a.nav-link {
     font-weight: 400;
@@ -33,4 +36,8 @@ Logo styles
   vertical-align: middle;
   background: url('../../../content/images/inphb_logo.png') no-repeat center center;
   background-size: contain;
+}
+
+.img-flags {
+  width: 30px;
 }

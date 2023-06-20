@@ -40,6 +40,33 @@ public class Zone implements Serializable {
     @Column(name = "point_d")
     private Point pointD;
 
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "a_x")
+    private Double ax;
+
+    @Column(name = "a_y")
+    private Double ay;
+
+    @Column(name = "b_x")
+    private Double bx;
+
+    @Column(name = "b_y")
+    private Double by;
+
+    @Column(name = "c_x")
+    private Double cx;
+
+    @Column(name = "c_y")
+    private Double cy;
+
+    @Column(name = "d_x")
+    private Double dx;
+
+    @Column(name = "d_y")
+    private Double dy;
+
     @ManyToOne
     @JsonIgnoreProperties(value = { "travails", "zones", "presences" }, allowSetters = true)
     private User user;
@@ -111,6 +138,78 @@ public class Zone implements Serializable {
         this.pointD = pointD;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Double getAx() {
+        return ax;
+    }
+
+    public void setAx(Double ax) {
+        this.ax = ax;
+    }
+
+    public Double getAy() {
+        return ay;
+    }
+
+    public void setAy(Double ay) {
+        this.ay = ay;
+    }
+
+    public Double getBx() {
+        return bx;
+    }
+
+    public void setBx(Double bx) {
+        this.bx = bx;
+    }
+
+    public Double getBy() {
+        return by;
+    }
+
+    public void setBy(Double by) {
+        this.by = by;
+    }
+
+    public Double getCx() {
+        return cx;
+    }
+
+    public void setCx(Double cx) {
+        this.cx = cx;
+    }
+
+    public Double getCy() {
+        return cy;
+    }
+
+    public void setCy(Double cy) {
+        this.cy = cy;
+    }
+
+    public Double getDx() {
+        return dx;
+    }
+
+    public void setDx(Double dx) {
+        this.dx = dx;
+    }
+
+    public Double getDy() {
+        return dy;
+    }
+
+    public void setDy(Double dy) {
+        this.dy = dy;
+    }
+
     public User getUser() {
         return this.user;
     }
@@ -152,6 +251,16 @@ public class Zone implements Serializable {
             ", pointB='" + getPointB() + "'" +
             ", pointC='" + getPointC() + "'" +
             ", pointD='" + getPointD() + "'" +
+            ", user='" + getUser() + "'" +
+            ", nom='" + getNom() + "'" +
+            ", ax='" + getAx() + "'" +
+            ", ay='" + getAy() + "'" +
+            ", bx='" + getBx() + "'" +
+            ", by='" + getBy() + "'" +
+            ", cx='" + getCx() + "'" +
+            ", cy='" + getCy() + "'" +
+            ", dx='" + getDx() + "'" +
+            ", dy='" + getDy() + "'" +
             "}";
     }
 }

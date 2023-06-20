@@ -4,15 +4,15 @@
       "home": {
         "title": "Presences",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Presence",
-        "createOrEditLabel": "Créer ou éditer un Presence",
-        "notFound": "Aucun Presence trouvé"
+        "createLabel": "Créer une nouvelle Presence",
+        "createOrEditLabel": "Créer ou éditer une Presence",
+        "notFound": "Aucune Presence trouvée"
       },
-      "created": "Un nouveau Presence a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Presence avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Presence avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouvelle Presence a été créée avec l'identifiant {{ param }}",
+      "updated": "La Presence avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "La Presence avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Presence {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Presence {{ id }} ?"
       },
       "detail": {
         "title": "Presence"

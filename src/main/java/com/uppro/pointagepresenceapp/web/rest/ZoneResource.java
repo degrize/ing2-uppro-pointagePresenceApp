@@ -1,5 +1,6 @@
 package com.uppro.pointagepresenceapp.web.rest;
 
+import com.uppro.pointagepresenceapp.domain.Zone;
 import com.uppro.pointagepresenceapp.repository.ZoneRepository;
 import com.uppro.pointagepresenceapp.service.ZoneService;
 import com.uppro.pointagepresenceapp.service.dto.ZoneDTO;
@@ -175,5 +176,12 @@ public class ZoneResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/zones/last-zone")
+    public ResponseEntity<Zone> getLastZone() {
+        log.debug("REST request to get the Last Zone");
+        Zone lastZone = zoneService.getLastZone();
+        return ResponseEntity.ok().body(lastZone);
     }
 }

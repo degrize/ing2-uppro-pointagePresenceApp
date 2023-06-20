@@ -38,28 +38,30 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pointA">
+          <th scope="col" jhiSortBy="nom">
+            <div class="d-flex">
+              <span>Nom</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col">
             <div class="d-flex">
               <span jhiTranslate="pointagePresenceApp.zone.pointA">Point A</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pointB">
+          <th scope="col">
             <div class="d-flex">
               <span jhiTranslate="pointagePresenceApp.zone.pointB">Point B</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pointC">
+          <th scope="col">
             <div class="d-flex">
               <span jhiTranslate="pointagePresenceApp.zone.pointC">Point C</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="pointD">
+          <th scope="col">
             <div class="d-flex">
               <span jhiTranslate="pointagePresenceApp.zone.pointD">Point D</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
           <th scope="col"></th>
@@ -70,10 +72,11 @@
           <td>
             <a [routerLink]="['/zone', zone.id, 'view']">{{ zone.id }}</a>
           </td>
-          <td jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointA }}">{{ zone.pointA }}</td>
-          <td jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointB }}">{{ zone.pointB }}</td>
-          <td jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointC }}">{{ zone.pointC }}</td>
-          <td jhiTranslate="{{ 'pointagePresenceApp.Point.' + zone.pointD }}">{{ zone.pointD }}</td>
+          <td>{{ zone.nom }}</td>
+          <td>{{ zone.ax }} ; {{ zone.ay }}</td>
+          <td>{{ zone.bx }} ; {{ zone.by }}</td>
+          <td>{{ zone.cx }} ; {{ zone.cy }}</td>
+          <td>{{ zone.dx }} ; {{ zone.dy }}</td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/zone', zone.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

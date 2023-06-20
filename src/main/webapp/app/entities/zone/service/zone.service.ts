@@ -19,6 +19,7 @@ export class ZoneService {
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(zone: NewZone): Observable<EntityResponseType> {
+    console.log(zone);
     return this.http.post<IZone>(this.resourceUrl, zone, { observe: 'response' });
   }
 
@@ -37,6 +38,10 @@ export class ZoneService {
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IZone[]>(this.resourceUrl, { params: options, observe: 'response' });
+  }
+
+  getLastZone(): Observable<IZone> {
+    return this.http.get<IZone>(`${this.resourceUrl}/last-zone`);
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

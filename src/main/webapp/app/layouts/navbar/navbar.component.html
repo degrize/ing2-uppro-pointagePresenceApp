@@ -138,8 +138,8 @@
         <li ngbDropdown class="nav-item dropdown pointer" display="dynamic" *ngIf="languages && languages.length > 1">
           <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">
             <span>
-              <fa-icon icon="flag"></fa-icon>
-              <span jhiTranslate="global.menu.language">Langue</span>
+              <img width="30px" [src]="'../../../content/images/flags/' + lang + '.png'" class="img-flags" />
+              <span>{{ lang.toUpperCase() }} </span>
             </span>
           </a>
           <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">
@@ -149,8 +149,12 @@
                 [jhiActiveMenu]="language"
                 href="javascript:void(0);"
                 (click)="changeLanguage(language); collapseNavbar()"
-                >{{ language | findLanguageFromKey }}</a
               >
+                <span>
+                  <img [src]="'../../../content/images/flags/' + language + '.png'" class="img-flags" />
+                  <span>{{ language | findLanguageFromKey }} </span>
+                </span>
+              </a>
             </li>
           </ul>
         </li>
