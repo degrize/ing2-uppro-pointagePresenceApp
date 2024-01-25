@@ -1,4 +1,7 @@
 # pointagePresenceApp
+``UNE APPLICATION WEB DE POINTAGE DE PRESENCE DANS UN LIEU DE TRAVAIL : CAS DU LARIT (Laboratoire de Recherche dans une école d'ingénieurs)``
+
+
 Veuillez consulter le raport du projet 
 [RAPPORT DU PROJET](https://github.com/degrize/ing2-uppro-pointagePresenceApp/files/14051322/UpPro2_ING2_FINAL.pdf)
 
@@ -7,3 +10,14 @@ Veuillez consulter le raport du projet
 
 L'agorithme a été détailé dans le rapport du projet: page 17 à 21
 [RAPPORT UP PRO_S2_KANE_MEDA_DOYEN.pdf](https://github.com/degrize/ing2-uppro-pointagePresenceApp/files/14051370/RAPPORT.UP.PRO_S2_KANE_MEDA_DOYEN.pdf)
+
+## Technologies utiliées pour le développement du projet
+<img width="638" alt="image" src="https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/820adcc5-fcf6-4103-8dc6-42eb3957497e">
+
+
+## Présentation de quelques pages de l'appli
+![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/9ffe0cbd-13f4-4885-87cf-cfaa4298646a)
+![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/a5c63c0a-0140-464b-b9b0-818caf746b68)
+![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/c836e57c-411f-46ca-aa82-82722ffe0f8b)
+![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/1aacd918-f677-40cc-adc3-1d1e2ba1b8c8)
+
