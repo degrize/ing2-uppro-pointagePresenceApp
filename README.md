@@ -16,8 +16,15 @@ L'agorithme a été détailé dans le rapport du projet: page 17 à 21
 
 
 ## Présentation de quelques pages de l'appli
+##### Login
 ![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/9ffe0cbd-13f4-4885-87cf-cfaa4298646a)
+
+#### Accueil
 ![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/a5c63c0a-0140-464b-b9b0-818caf746b68)
+
+#### Marquage de présence
 ![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/c836e57c-411f-46ca-aa82-82722ffe0f8b)
-![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/1aacd918-f677-40cc-adc3-1d1e2ba1b8c8)
+
+#### Réservé à l'Admin pour la gestion de présence/absence
+![image](https://github.com/degrize/ing2-uppro-pointagePresenceApp/assets/61656189/7b738dd2-7800-4732-9bf2-67d70b1726f1)
 
