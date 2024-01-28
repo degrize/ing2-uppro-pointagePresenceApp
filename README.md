@@ -1,5 +1,6 @@
 # pointagePresenceApp
-``UNE APPLICATION WEB DE POINTAGE DE PRESENCE DANS UN LIEU DE TRAVAIL : CAS DU LARIT (Laboratoire de Recherche dans une école d'ingénieurs)``
+``UNE APPLICATION WEB DE POINTAGE DE PRESENCE DANS UN LIEU DE TRAVAIL :``
+`Les utilisateurs peuvent marquer leur présence en utilisant soit leur téléphone soit leur ordinateur. Cependant, ils ne peuvent le faire que dans une zone clairement définie.`
 
 
 Veuillez consulter le raport du projet 
