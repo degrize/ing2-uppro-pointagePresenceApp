@@ -1,7 +1,7 @@
 # pointagePresenceApp
 ``UNE APPLICATION WEB DE POINTAGE DE PRESENCE DANS UN LIEU DE TRAVAIL :``
 
-`Les utilisateurs peuvent marquer leur présence en utilisant soit leur téléphone soit leur ordinateur. Cependant, ils ne peuvent le faire que dans une zone clairement définie.`
+Les utilisateurs peuvent marquer leur présence en utilisant soit leur téléphone soit leur ordinateur. Cependant, ils ne peuvent le faire que dans une zone clairement définie.
 
 
 Veuillez consulter le raport du projet 
